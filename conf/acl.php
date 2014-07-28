@@ -1,0 +1,5 @@
+; <?php /*
+
+galleries = "Manage galleries"
+
+; */ ?>

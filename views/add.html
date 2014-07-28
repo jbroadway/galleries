@@ -1,0 +1,67 @@
+<div class="form">
+<form method="post" id="{{ _form }}">
+
+
+<p>
+	{"Title"}:<br />
+	<input type="text" name="title" value="{{ title|quotes }}" size="40" />
+	<span class="notice" id="title-notice">{"Please enter a title."}</span>
+</p>
+
+<p>
+	{"Description"}:<br />
+	<textarea name="description" cols="60" rows="4">{{ description }}</textarea>
+	<span class="notice" id="description-notice">{"Please enter a description."}</span>
+</p>
+
+<p>
+	{"Folder"}:<br />
+	<select name="folder">
+		<option value="">- select -</option>
+{% for _key, _value in folders %}
+		<option value="{{_value|quotes}}"{% if _value == $data->folder %} selected{% end %}>{{_value}}</option>
+{% end %}
+	</select>
+	<span class="notice" id="folder-notice">{"Please choose a folder."}</span>
+</p>
+
+{! filemanager/util/browser !}
+
+<p>
+	{"Thumbnail"}:<br />
+	<img src="{{ thumbnail|quotes }}" id="thumbnail-preview" style="max-width: 150px; max-height: 100px" /><br />
+	<button id="thumbnail-browse">{"Browse"}</button>
+	<input type="hidden" name="thumbnail" id="thumbnail" value="{{ thumbnail|quotes }}" />
+	<span class="notice" id="thumbnail-notice">{"Please enter a thumbnail."}</span>
+</p>
+
+<script>
+$(function () {
+	$('#thumbnail-browse').click (function (e) {
+		e.preventDefault ();
+
+		$.filebrowser ({
+			thumbs: true,
+			set_value: '#thumbnail',
+			title: '{"Choose an image"}',
+			callback: function (file) {
+				$('#thumbnail-preview').attr ('src', file);
+			}
+		});
+	});
+});
+</script>
+
+{! admin/util/datewidget !}
+
+<p>
+	{"Date"}:<br />
+	<input type="text" name="date" class="datewidget-date" value="{{ date|quotes }}" />
+	<span class="notice" id="date-notice">{"Please enter a date."}</span>
+</p>
+
+
+<p><input type="submit" value="{"Add Gallery"}" /></p>
+
+</form>
+</div>
