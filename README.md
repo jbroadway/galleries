@@ -1,5 +1,7 @@
 # Simple Galleries
 
+** Status: Alpha **
+
 This is a very simple photo gallery app for the [Elefant CMS](http://www.elefantcms.com/).
 Galleries are simply folders under Tools > Files with a bit of metadata attached,
 sorted by date or alphabetically.
