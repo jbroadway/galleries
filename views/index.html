@@ -1,1 +1,13 @@
-<p>{{ body|none }}</p>
+<div class="gallery-list">
+{% for _gallery in galleries %}
+	<div class="gallery row">
+		<div class="gallery-thumbnail unit-25">
+			<a href="/galleries/{{ _gallery->id }}/{{ _gallery->title|URLify::filter }}"><img src="{{ _gallery->thumbnail }}" /></a>
+		</div>
+		<div class="gallery-summary unit-75">
+			<h3><a href="/galleries/{{ _gallery->id }}/{{ _gallery->title|URLify::filter }}">{{ _gallery->title }}</a></h3>
+			<p>{{ _gallery->description }}</p>
+		</div>
+	</div>
+{% end %}
+</div>
