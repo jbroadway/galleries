@@ -1,0 +1,24 @@
+<div class="form">
+
+<form method="post" id="{{_form}}">
+
+<p>{"Galleries page title"}:<br />
+<input type="text" name="title" size="40" value="{{ title|quotes }}" />
+<span class="notice" id="title-notice">{"You must enter a page title."}</span></p>
+
+<p>{"Page layout"}:<br />
+<select name="layout">
+{% foreach layouts %}
+	<option value="{{ loop_value }}"{% if loop_value == $data->layout %} selected{% end %}>{{ loop_value|ucfirst }}</option>
+{% end %}
+</select></p>
+
+<p>
+	<input type="submit" value="{"Save Settings"}" />
+	&nbsp;
+	<a href="/galleries/admin" onclick="return confirm ('{"Are you sure you want to cancel and lose any changes?"}')">{"Cancel"}</a>
+</p>
+
+</form>
+
+</div>

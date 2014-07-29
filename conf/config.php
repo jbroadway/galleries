@@ -1,5 +1,11 @@
 ; <?php /*
 
+[Galleries]
+
+title = Photo Gallery
+layout = default
+include_in_nav = On
+
 [Admin]
 
 name = Galleries

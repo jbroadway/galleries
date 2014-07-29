@@ -1,6 +1,12 @@
+<p>
 {% if User::require_acl ('admin/add') %}
-<p><a href="/galleries/add">{"Add Gallery"}</a></p>
+	<a href="/galleries/add">{"Add Gallery"}</a>
 {% end %}
+{% if User::require_acl ('settings') %}
+	&nbsp;|&nbsp;
+	<a href="/galleries/settings">{"Settings"}</a>
+{% end %}
+</p>
 
 <p>
 <table width="100%">
