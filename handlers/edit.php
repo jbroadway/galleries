@@ -7,12 +7,12 @@ $page->title = __ ('Edit Gallery');
 
 $form = new Form ('post', $this);
 
-$form->data = new galleries\Gallery ($_GET['id']);
+$gallery = new galleries\Gallery ($_GET['id']);
+$form->data = $gallery->orig ();
 $form->data->folders = FileManager::list_folders ();
 
-echo $form->handle (function ($form) {
-	// Update the gallery 
-	$gallery = $form->data;
+echo $form->handle (function ($form) use ($gallery) {
+	// Update the gallery
 	$gallery->title = $_POST['title'];
 	$gallery->description = $_POST['description'];
 	$gallery->folder = $_POST['folder'];
